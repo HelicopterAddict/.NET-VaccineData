@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CST8333-LangResearch", "CST8333-LangResearch\CST8333-LangResearch.csproj", "{42DD2FCB-EED6-48A0-BB21-357B70D4A3EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CST8333-LangResearchTests", "CST8333-LangResearchTests\CST8333-LangResearchTests.csproj", "{5DEFE55D-6E80-4107-99C5-D2E123CE0AF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42DD2FCB-EED6-48A0-BB21-357B70D4A3EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42DD2FCB-EED6-48A0-BB21-357B70D4A3EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42DD2FCB-EED6-48A0-BB21-357B70D4A3EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42DD2FCB-EED6-48A0-BB21-357B70D4A3EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DEFE55D-6E80-4107-99C5-D2E123CE0AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DEFE55D-6E80-4107-99C5-D2E123CE0AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DEFE55D-6E80-4107-99C5-D2E123CE0AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DEFE55D-6E80-4107-99C5-D2E123CE0AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89967BAE-D3DE-40C7-ACE2-52BA87D6D84A}
+	EndGlobalSection
+EndGlobal

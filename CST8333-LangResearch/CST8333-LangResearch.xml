@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CST8333-LangResearch</name>
+    </assembly>
+    <members>
+        <member name="T:Model.DatabaseModel">
+            <summary>
+            Class for persistence methods i.e. communication with the database
+            </summary>
+        </member>
+        <member name="F:Model.DatabaseModel.db">
+            <summary>
+            Database object of the IMongoDatabase provided by the Mongo nu.get package
+            </summary>
+        </member>
+        <member name="F:Model.DatabaseModel.table">
+            <summary>
+            Name of the collection(table) to perform CRUD on
+            </summary>
+        </member>
+        <member name="M:Model.DatabaseModel.#ctor(System.String)">
+            <summary>
+            Constructor which initializes the IMongoDatabase
+            </summary>
+            <param name="database">Database to access the collection</param>
+        </member>
+        <member name="M:Model.DatabaseModel.InsertRecord``1(``0)">
+            <summary>
+            Method to insert a record of type T into the database, Validation done in VaccineView <see cref="T:View.VaccineView"/>
+            </summary>
+            <typeparam name="T">For current scope of this project T is confined to VaccineData <see cref="T:Model.VaccineData"/></typeparam>
+            <param name="record">The record to be inserted</param>
+        </member>
+        <member name="M:Model.DatabaseModel.LoadRecords``1">
+            <summary>
+            Loads records
+            </summary>
+            <typeparam name="T">For current scope of this project T is confined to VaccineData <see cref="T:Model.VaccineData"/></typeparam>
+            <returns>All found records in a list format</returns>
+        </member>
+        <member name="M:Model.DatabaseModel.LoadRecordById``1(MongoDB.Bson.ObjectId)">
+            <summary>
+            Loads a record with the provided Id
+            </summary>
+            <typeparam name="T">For current scope of this project T is confined to VaccineData <see cref="T:Model.VaccineData"/></typeparam>
+            <param name="id">The id of the record to be found</param>
+            <returns>The first record with that Id</returns>
+        </member>
+        <member name="M:Model.DatabaseModel.UpdateRecord``1(MongoDB.Bson.ObjectId,``0)">
+            <summary>
+            Updates an existing record, can also be used to insert new records (not used for inserting in this project)
+            </summary>
+            <typeparam name="T">For current scope of this project T is confined to VaccineData <see cref="T:Model.VaccineData"/></typeparam>
+            <param name="id">The id of the record to be found</param>
+            <param name="record"></param>
+        </member>
+        <member name="M:Model.DatabaseModel.DeleteRecord``1(MongoDB.Bson.ObjectId)">
+            <summary>
+            Deletes a record with the matching Id
+            </summary>
+            <typeparam name="T">For current scope of this project T is confined to VaccineData <see cref="T:Model.VaccineData"/></typeparam>
+            <param name="id">The id of the record to be found</param>
+        </member>
+        <member name="M:Model.DatabaseModel.GetJsonById``1(MongoDB.Bson.ObjectId)">
+            <summary>
+            Returns the value of an object with a particular Id in a JSON string format
+            </summary>
+            <typeparam name="T">For current scope of this project T is confined to VaccineData <see cref="T:Model.VaccineData"/></typeparam>
+            <param name="id">The id of the object</param>
+            <returns>The value of the object in String JSON form</returns>
+        </member>
+        <member name="T:Model.VaccineData">
+            <summary>
+            The Model class which contains the DTO in whose form information is stored
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.Id">
+            <summary>
+            The unique Id mongo generates for its Bson document objects
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.Pruid">
+            <summary>
+            The province ID
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.PreName">
+            <summary>
+            The province's name in English
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.PrfName">
+            <summary>
+            The province's name in French
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.WeekEnd">
+            <summary>
+            Date when the data was collected posted
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.ProductName">
+            <summary>
+            Name of the vaccine supplier
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.NumTotalAtLeast1Dose">
+            <summary>
+            Number of people who have had one shot or more of the vaccine
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.NumTotalPartially">
+            <summary>
+            Number of people who have been partially vaccinated
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.NumTotalFully">
+            <summary>
+            Number of fully vaccinated people
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.PropAtLeast1Dose">
+            <summary>
+            Proportion of people who have had one shot or more of the vaccine
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.PropPartially">
+            <summary>
+            Proportion of people who have been partially vaccinated
+            </summary>
+        </member>
+        <member name="P:Model.VaccineData.PropFully">
+            <summary>
+            Proportion of fully vaccinated people
+            </summary>
+        </member>
+        <member name="M:Model.VaccineData.#ctor(System.String[])">
+            <summary>
+            Constructor for instantiating new objects in one line
+            </summary>
+        </member>
+        <member name="T:Control.Launcher">
+            <summary>
+            Launches the program
+            </summary>
+        </member>
+        <member name="M:Control.Launcher.Main(System.String[])">
+            <summary>
+            The starting point of the program
+            </summary>
+            <param name="args">Stores all command line arguments which are given by the user when the program is run</param>
+        </member>
+        <member name="T:Control.VaccineControl">
+            <summary>
+            The control/business layer of the project
+            </summary>
+        </member>
+        <member name="P:Control.VaccineControl.VaxList">
+            <summary>
+            List containing records obtained from the file/persisted data
+            </summary>
+        </member>
+        <member name="P:Control.VaccineControl.ColNames">
+            <summary>
+            List containing column names obtained from the file/persisted data
+            </summary>
+        </member>
+        <member name="F:Control.VaccineControl.db">
+            <summary>
+            The object through which all CRUD is done
+            </summary>
+        </member>
+        <member name="M:Control.VaccineControl.ReadIntoMemory">
+            <summary>
+            Puts persisted data into the VaxList list <see cref="P:Control.VaccineControl.VaxList"/>
+            </summary>
+        </member>
+        <member name="M:Control.VaccineControl.AddNewRecord(System.String[])">
+            <summary>
+            Adds a new record into VaxList <see cref="P:Control.VaccineControl.VaxList"/>
+            </summary>
+            <param name="userRecord"></param>
+        </member>
+        <member name="M:Control.VaccineControl.DeleteRecord(System.Int32)">
+            <summary>
+            Removes a record from VaxList <see cref="P:Control.VaccineControl.VaxList"/>
+            </summary>
+            <param name="id">Index of the element to be removed</param>
+        </member>
+        <member name="M:Control.VaccineControl.GetListSize">
+            <summary>
+            Returns size of VaxList <see cref="P:Control.VaccineControl.VaxList"/>
+            </summary>
+            <returns>Size of the list</returns>
+        </member>
+        <member name="M:Control.VaccineControl.EditRecord(System.Int32,System.Int32,System.String)">
+            <summary>
+            Edits a record in VaxList <see cref="P:Control.VaccineControl.VaxList"/>
+            </summary>
+            <param name="id">Index of the element to be edited</param>
+            <param name="field">Position of the element in the row</param>
+            <param name="value">The new value</param>
+        </member>
+        <member name="M:Control.VaccineControl.DataAsArray(System.Int32)">
+            <summary>
+            Returns data from VaxList <see cref="P:Control.VaccineControl.VaxList"/> in the form of a string array for display and editing purposes
+            </summary>
+            <param name="id">Index of the element</param>
+            <returns>A string array of the row elements</returns>
+        </member>
+        <member name="M:Control.VaccineControl.WriteAllToDb">
+            <summary>
+            Used only for initializing database collection by taking objects from the file into a list,
+            and pushing the list elements into the collection
+            </summary>
+        </member>
+        <member name="M:Control.VaccineControl.SortByAtLeast1Dose">
+            <summary>
+            Sorts the list by the number of people with at least 1 dose
+            </summary>
+        </member>
+        <member name="M:Control.VaccineControl.SortByPartialDose">
+            <summary>
+            Sorts the list by the number of partially vaccinated people
+            </summary>
+        </member>
+        <member name="M:Control.VaccineControl.SortByFullDose">
+            <summary>
+            Sorts the list by the number of fully vaccinated people
+            </summary>
+        </member>
+        <member name="M:Control.VaccineControl.DataAsCsvString(System.Int32)">
+            <summary>
+            Returns data from VaxList <see cref="P:Control.VaccineControl.VaxList"/> in the form of a comma separated string for writing purposes
+            </summary>
+            <param name="id">Index of the element</param>
+            <returns>A string formatted as a CSV row</returns>
+        </member>
+        <member name="M:Control.VaccineControl.StringMutator(System.String)">
+            <summary>
+            Splits a csv row into a string array, and then truncates it
+            </summary>
+            <param name="input">The string to split and truncate</param>
+            <returns>Mutated string which can be used to read into the VaccineData constructor</returns>
+        </member>
+        <member name="T:CST8333_LangResearch.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:CST8333_LangResearch.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:CST8333_LangResearch.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:View.VaccineView">
+            <summary>
+            The view/presentation layer of the project
+            </summary>
+        </member>
+        <member name="F:View.VaccineView.controller">
+            <summary>
+            Controller object
+            </summary>
+        </member>
+        <member name="F:View.VaccineView.table">
+            <summary>
+            Part of the ConsoleTables library, https://github.com/khalidabuhakmeh/ConsoleTables
+            Takes string arrays and outputs formatted tables
+            </summary>
+        </member>
+        <member name="M:View.VaccineView.Menu">
+            <summary>
+            The main interface through which the user interacts with the program
+            </summary>
+        </member>
+        <member name="M:View.VaccineView.InitTableAddColumns">
+            <summary>
+            Initializes the ConsoleTable with columns taken from the data provided
+            </summary>
+        </member>
+        <member name="M:View.VaccineView.AddAllRowsToTable(System.Int32)">
+            <summary>
+            Loops through the whole list and puts it into the ConsoleTable
+            </summary>
+        </member>
+        <member name="M:View.VaccineView.AddRowsToTable(System.Int32)">
+            <summary>
+            Adds an element from the list as a row to the ConsoleTable
+            </summary>
+            <param name="index">The index of the element from the list to be added</param>
+        </member>
+        <member name="M:View.VaccineView.EnterNewRecord">
+            <summary>
+            Takes values from the user to create a new record
+            </summary>
+            <returns>
+            A string array which is passed to VaccineControl's AddNewRecord() method
+            <see cref="M:Control.VaccineControl.AddNewRecord(System.String[])"/>
+            </returns>
+        </member>
+        <member name="M:View.VaccineView.PrintRecordDetails(System.Int32)">
+            <summary>
+            Prints a single record as a three column table
+            </summary>
+            <param name="id">Index of the record to be printed</param>
+        </member>
+        <member name="M:View.VaccineView.Validator(System.Int32,System.String)">
+            <summary>
+            Ensures data integrity when new entries are being made or existing entries are being edited
+            </summary>
+            <param name="index">The index of the entry in the string array (11 indexes in total)</param>
+            <param name="input">The value to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:View.VaccineView.GetColumnNamesWithId">
+            <summary>
+            Adds an ID column to the front of the Column Names <see cref="P:Control.VaccineControl.ColNames"/>
+            </summary>
+            <returns>The array with the added ID column</returns>
+        </member>
+        <member name="M:View.VaccineView.GetRowsWithId(System.Int32)">
+            <summary>
+            Adds a column to the front of the row which displays the element's position in the list
+            </summary>
+            <param name="id">Index of the record</param>
+            <returns>The array with the added ID column</returns>
+        </member>
+    </members>
+</doc>
